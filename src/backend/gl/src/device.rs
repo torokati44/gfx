@@ -290,9 +290,11 @@ impl Device {
         let version = self.share.info.shading_language.tuple();
         compile_options.version = if is_embedded {
             match version {
+                (3, 20) => glsl::Version::V3_20Es,
+                (3, 10) => glsl::Version::V3_10Es,
                 (3, 00) => glsl::Version::V3_00Es,
                 (1, 00) => glsl::Version::V1_00Es,
-                other if other > (3, 0) => glsl::Version::V3_00Es,
+                other if other > (3, 20) => glsl::Version::V3_20Es,
                 other => panic!("GLSL version is not recognized: {:?}", other),
             }
         } else {
