@@ -291,6 +291,7 @@ impl Device {
         compile_options.version = if is_embedded {
             match version {
                 (3, 20) => glsl::Version::V3_20Es,
+                (3, 2) => glsl::Version::V3_20Es,
                 (3, 10) => glsl::Version::V3_10Es,
                 (3, 00) => glsl::Version::V3_00Es,
                 (1, 00) => glsl::Version::V1_00Es,

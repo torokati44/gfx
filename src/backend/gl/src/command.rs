@@ -1631,6 +1631,7 @@ impl command::CommandBuffer<Backend> for CommandBuffer {
             // in our uniform list
             uniforms.get(0).unwrap()
         } else {
+            log::trace!("looking up {:?} in {:?}", offset, uniforms);
             match uniforms.binary_search_by(|uniform| uniform.offset.cmp(&offset as _)) {
                 Ok(index) => uniforms.get(index).unwrap(),
                 Err(_) => panic!("No uniform found at offset: {}", offset),
